@@ -3,3 +3,10 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+
+.idea/
+dailyplanner.metadata.v7.bin
+dailyplanner.projects.v7.bin
+.dtbcache.v2
+.futdcache.v2
+.suo
