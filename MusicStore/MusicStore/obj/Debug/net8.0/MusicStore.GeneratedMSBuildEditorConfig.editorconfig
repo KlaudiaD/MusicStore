@@ -20,5 +20,11 @@ build_property.EnableGeneratedComInterfaceComImportInterop =
 [C:/Users/klaud/RiderProjects/Programowanie/MusicStore/MusicStore/MusicStore/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/klaud/RiderProjects/Programowanie/MusicStore/MusicStore/MusicStore/Icons.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/klaud/RiderProjects/Programowanie/MusicStore/MusicStore/MusicStore/Views/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/klaud/RiderProjects/Programowanie/MusicStore/MusicStore/MusicStore/Views/MusicStoreWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
