@@ -1,0 +1,16 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:DailyPlanner.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DailyPlanner.Views.Sidebar">
+    <StackPanel Background="#FFFFFF" Width="50">
+        <!--<Button Content="Home" Command="{Binding NavigateCommand}" CommandParameter="Home"/>
+        <Button Content="Habits" Command="{Binding NavigateCommand}" CommandParameter="Habits"/>
+        <Button Content="Tasks" Command="{Binding NavigateCommand}" CommandParameter="Tasks"/>
+        <Button Content="Notes" Command="{Binding NavigateCommand}" CommandParameter="Notes"/>
+        <Button Content="Calendar" Command="{Binding NavigateCommand}" CommandParameter="Calendar"/>
+        <Button Content="Options" Command="{Binding NavigateCommand}" CommandParameter="Options"/>-->
+    </StackPanel>
+</UserControl>

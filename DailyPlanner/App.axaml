@@ -2,8 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="DailyPlanner.App"
              xmlns:local="using:DailyPlanner"
-             RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+             RequestedThemeVariant="Light">
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
         <local:ViewLocator/>
@@ -12,4 +12,7 @@
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
+    <Application.Resources>
+        <ImageBrush x:Key="Bg-blue-kopia" Stretch="UniformToFill" Source="/Assets/bg-blue-kopia.jpg"></ImageBrush>
+    </Application.Resources>
 </Application>

@@ -1,8 +1,25 @@
-﻿namespace DailyPlanner.ViewModels;
+﻿using System.Reactive;
+using DailyPlanner.ViewModels;
+using ReactiveUI;
 
 public class MainWindowViewModel : ViewModelBase
 {
-#pragma warning disable CA1822 // Mark members as static
-    public string Greeting => "Welcome to Avalonia!";
-#pragma warning restore CA1822 // Mark members as static
+    private bool _isVisibleAddHabitView;
+    public bool IsVisibleAddHabitView
+    {
+        get => _isVisibleAddHabitView;
+        set => this.RaiseAndSetIfChanged(ref _isVisibleAddHabitView, value);
+    }
+
+    public ReactiveCommand<Unit, Unit> ToggleAddHabitViewCommand { get; }
+
+    public MainWindowViewModel()
+    {
+        ToggleAddHabitViewCommand = ReactiveCommand.Create(ToggleAddHabitView);
+    }
+
+    private void ToggleAddHabitView()
+    {
+        IsVisibleAddHabitView = !IsVisibleAddHabitView;
+    }
 }
