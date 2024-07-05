@@ -18,5 +18,6 @@
         </Border>
         <TextBlock HorizontalAlignment="Center" Text="{Binding Title}"/>
         <TextBlock HorizontalAlignment="Center" Text="{Binding Artist}"/>
+        <Button Content="Delete" Command="{Binding RemoveCommand}" IsVisible="{Binding CanDelete}" />
     </StackPanel>
 </UserControl>

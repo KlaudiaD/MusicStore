@@ -23,30 +23,41 @@ namespace MusicStore.ViewModels
             BuyMusicCommand = ReactiveCommand.CreateFromTask(async () =>
             {
                 var store = new MusicStoreViewModel();
-
-                var result = await ShowDialog.Handle(store);
-
-                if (result != null)
+                
+                var resultViewModel = await ShowDialog.Handle(store);
+                if (resultViewModel != null)
                 {
-                    Albums.Add(result);
-                    await result.SaveToDiskAsync();
+                    var album = resultViewModel.Album;
+                    var albumViewModel = new AlbumViewModel(album, canDelete: true);
+                    Albums.Add(albumViewModel);
+                    albumViewModel.RequestRemove += RemoveAlbum;
+                    
+                    await albumViewModel.LoadCover();
+                    await albumViewModel.SaveToDiskAsync();
                 }
             });
         }
         
         private async void LoadAlbums()
         {
-            var albums = (await Album.LoadCachedAsync()).Select(x => new AlbumViewModel(x));
-
-            foreach (var album in albums)
+            var albums = (await Album.LoadCachedAsync()).Select(x => new AlbumViewModel(x, true));
+            foreach (var albumViewModel in albums)
             {
-                Albums.Add(album);
+                Albums.Add(albumViewModel);
+                albumViewModel.RequestRemove += RemoveAlbum; // Subscribe to the event
             }
 
             foreach (var album in Albums.ToList())
             {
                 await album.LoadCover();
             }
+        }
+        
+        private void RemoveAlbum(AlbumViewModel albumViewModel)
+        {
+            Albums.Remove(albumViewModel);
+            albumViewModel.RequestRemove -= RemoveAlbum;
+            albumViewModel.DeleteAlbumFromDisk();
         }
     }
 }

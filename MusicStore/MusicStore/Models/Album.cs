@@ -104,5 +104,22 @@ namespace MusicStore.Models
 
             return fileName;
         }
+        
+        public async Task DeleteAsync()
+        {
+            // Delete the metadata file
+            var metadataFilePath = CachePath;
+            if (File.Exists(metadataFilePath))
+            {
+                File.Delete(metadataFilePath);
+            }
+
+            // Delete the cover image file
+            var coverImagePath = CachePath + ".bmp";
+            if (File.Exists(coverImagePath))
+            {
+                File.Delete(coverImagePath);
+            }
+        }
     }
 }
