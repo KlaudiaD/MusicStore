@@ -16,7 +16,7 @@ namespace MusicStore.Models
         public string Title { get; set; }
         public string CoverUrl { get; set; }
         private static HttpClient s_httpClient = new();
-        private string CachePath => $"./Cache/{Artist} - {Title}";
+        private string CachePath => $"./Cache/{SanitizeFileName(Artist)} - {SanitizeFileName(Title)}";
 
         public async Task<Stream> LoadCoverBitmapAsync()
         {
@@ -40,8 +40,7 @@ namespace MusicStore.Models
 
         public static async Task<IEnumerable<Album>> SearchAsync(string searchTerm)
         {
-            var query = await s_SearchManager.GetAlbumsAsync(searchTerm)
-                .ConfigureAwait(false);
+            var query = await s_SearchManager.GetAlbumsAsync(searchTerm).ConfigureAwait(false);
 
             return query.Albums.Select(x =>
                 new Album(x.ArtistName, x.CollectionName,
@@ -61,15 +60,14 @@ namespace MusicStore.Models
             }
         }
 
+        private static async Task SaveToStreamAsync(Album data, Stream stream)
+        {
+            await JsonSerializer.SerializeAsync(stream, data).ConfigureAwait(false);
+        }
 
         public Stream SaveCoverBitmapStream()
         {
             return File.OpenWrite(CachePath + ".bmp");
-        }
-
-        private static async Task SaveToStreamAsync(Album data, Stream stream)
-        {
-            await JsonSerializer.SerializeAsync(stream, data).ConfigureAwait(false);
         }
 
         public static async Task<Album> LoadFromStream(Stream stream)
@@ -95,6 +93,16 @@ namespace MusicStore.Models
             }
 
             return results;
+        }
+
+        private static string SanitizeFileName(string fileName)
+        {
+            foreach (char c in Path.GetInvalidFileNameChars())
+            {
+                fileName = fileName.Replace(c, '_');
+            }
+
+            return fileName;
         }
     }
 }
