@@ -24,9 +24,9 @@
             <ExperimentalAcrylicBorder.Material>
                 <ExperimentalAcrylicMaterial
                     BackgroundSource="Digger"
-                    TintColor="SkyBlue"
+                    TintColor="Black"
                     TintOpacity="1"
-                    MaterialOpacity="0.65" />
+                    MaterialOpacity="1" />
             </ExperimentalAcrylicBorder.Material>
         </ExperimentalAcrylicBorder>
         
