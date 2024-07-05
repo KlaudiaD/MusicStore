@@ -6,7 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="MusicStore.Views.AlbumView"
              x:DataType="vm:AlbumViewModel">
-    
+
     <StackPanel Spacing="5" Width="200">
         <Border CornerRadius="10" ClipToBounds="True">
             <Panel Background="DodgerBlue">
@@ -21,8 +21,11 @@
                 </Border>
             </Panel>
         </Border>
-        <TextBlock HorizontalAlignment="Center" Text="{Binding Title}"/>
-        <TextBlock HorizontalAlignment="Center" Text="{Binding Artist}"/>
-        <!-- <Button Content="Delete" Command="{Binding RemoveCommand}" IsVisible="{Binding CanDelete}" /> -->
+        <ScrollViewer x:Name="TitleScrollViewer" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Width="200" HorizontalAlignment="Center">
+            <TextBlock x:Name="TitleTextBlock" HorizontalAlignment="Center" Text="{Binding Title}" TextWrapping="NoWrap"/>
+        </ScrollViewer>
+        <ScrollViewer x:Name="ArtistScrollViewer" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Width="200" HorizontalAlignment="Center">
+            <TextBlock x:Name="ArtistTextBlock" HorizontalAlignment="Center" Text="{Binding Artist}" TextWrapping="NoWrap"/>
+        </ScrollViewer>
     </StackPanel>
 </UserControl>
